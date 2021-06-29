@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+
+  composer:
+    image: composer
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: composer install
+
+  php:
+    build: ./container-build/php
+    image: php_composer
+    container_name: php_composer
+    networks:
+      my-network:
+        ipv4_address: 172.16.242.100
+        ipv6_address: 2001:3984:4091::100
+    ports:
+      - 9000:9000
+    command: php -S 0.0.0.0:9000 -t public/
+    volumes:
+      - .:/var/www
+
+networks:
+  my-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.242.0/24
+        - subnet: 2001:3984:4091::/64
