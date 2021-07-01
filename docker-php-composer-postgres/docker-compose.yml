@@ -24,20 +24,20 @@ services:
     volumes:
       - .:/var/www
 
-db:
-    image: postgres
-    restart: always
-    container_name: postgres
-    networks:
-      my-network:
-        ipv4_address: 172.16.242.101
-        ipv6_address: 2001:3984:4091::101
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: test
-    ports:
-      - 5432:5432
+  db:
+      image: postgres
+      restart: always
+      container_name: postgres
+      networks:
+        my-network:
+          ipv4_address: 172.16.242.101
+          ipv6_address: 2001:3984:4091::101
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: root
+        POSTGRES_DB: test
+      ports:
+        - 5432:5432
 
 networks:
   my-network:
