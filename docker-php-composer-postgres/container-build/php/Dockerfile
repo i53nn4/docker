@@ -1,4 +1,4 @@
-FROM php:8.0
+FROM php:8.1.5
 
 # Installing add-on packages
 RUN apt-get update \

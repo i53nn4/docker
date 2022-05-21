@@ -10,8 +10,8 @@ services:
 
   php:
     build: ./container-build/php
-    image: php_composer
-    container_name: php_composer
+    image: php_composer_postgres
+    container_name: php_composer_postgres
     networks:
       my-network:
         ipv4_address: 172.16.242.100
